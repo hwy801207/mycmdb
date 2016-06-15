@@ -8,7 +8,7 @@ def chpasswd(request):
     if request.method == 'POST':
         username = request.POST['username'] 
         password = request.POST['new_password'] 
-        print(username, password)
+       #print(username, password) add django.logging
     return render(request, "ok.html", {"u": username, "p":password})
 
 def ldap_auth(request):
