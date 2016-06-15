@@ -17,10 +17,11 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include('accounts.urls')),
     url(r'^ldap/', include('ldap.urls')),
     url(r'^resource/', include('base.urls')),
-    url(r'^$', cmdb.views.index),
+    url(r'^$', include('index.urls')),
 ]

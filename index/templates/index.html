@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<!-- 
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+关闭自适应
+-->
+<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+<title>Bootstrap 101 Template</title>
+
+<!-- Bootstrap -->
+<link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/static/base.css" rel="stylesheet">
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+      <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<span><h3>阅客运维平台</h3></span> {% block header %} {% endblock%}
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="active"><a href="#">Home</a></li>
+					<li><a href="#about">About</a></li>
+					<li><a href="#contact">Contact</a></li>
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</nav>
+	<div class="container" id="id_container">
+		<div class="row">
+			<div>
+				<div class="col-md-12">
+					<table class="table">
+						<caption>
+							<h2>PROD</h2>
+						</caption>
+						<tbody>
+							<tr class="success">
+								<td>zabbix监控</td>
+								<td>kafka后台</td>
+								<td>dubbo后台</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div>
+				<div class="col-md-12">
+					<table class="table">
+						<caption>
+							<h2>STAGE</h2>
+						</caption>
+						<tbody>
+							<tr class="success">
+								<td>zabbix监控</td>
+								<td>kafka后台</td>
+								<td>dubbo后台</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div>
+				<div class="col-md-12">
+					<table class="table">
+						<caption>
+							<h2>TEST</h2>
+						</caption>
+						<tbody>
+							<tr class="success">
+								<td>zabbix监控</td>
+								<td>kafka后台</td>
+								<td>dubbo后台</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div>
+				<div class="col-md-12">
+					<table class="table">
+						<caption>
+							<h2>公共服务</h2>
+						</caption>
+						<tbody>
+							<tr class="success">
+								<td><a href="/ldap/chpasswd">ldap密码重置</a></td>
+								<td><a href="http://10.10.42.50:10082/bugzilla/index.cgi">bugzilla平台</a></td>
+								<td><a href="http://jenkins.9icaishi.net/">jenkins平台</a></td>
+								<td><a href="http://mail.9icaishi.net">公司邮箱</a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) 
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    -->
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
