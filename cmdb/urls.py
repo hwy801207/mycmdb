@@ -21,4 +21,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include('accounts.urls')),
     url(r'^ldap/', include('ldap.urls')),
+    url(r'^resource/', include('base.urls')),
 ]
