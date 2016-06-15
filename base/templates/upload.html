@@ -1,0 +1,19 @@
+{% extends "base.html "%}
+{% block content %}
+	<form method="POST" enctype="multipart/form-data">
+		{{ uf.as_p }}
+		{% csrf_token %}
+		<input type="submit" value="ok">
+	</form>
+	
+	{% if data %} 
+	<table>
+		{% for file in data %}
+			<tr>
+			<td>{{ file.username }} </td>
+			<td> {{ file.file_path }}</td>
+			</tr>
+		{% endfor %}
+	</table>
+	{% endif%}
+{% endblock %}
