@@ -2,6 +2,10 @@
 {% block content %}
 <form class="form-horizontal" role="form" method="POST" action="{% url 'chpasswd' %}">
 <div class="form-group">
+    {% if error %}
+    <label class="col-md-2 control-label">错误提示:</label>
+    <p><font color="#FF0000"><b>{{ error }},请重新提交</b></font></p>
+    {% endif %}
 <label for="username" class="col-md-2 control-label">
 {{ form.username.label }}
 </label>

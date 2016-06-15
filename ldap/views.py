@@ -10,6 +10,7 @@ from django.core.urlresolvers import reverse
 
 def chpasswd(request):
     loginForm = None
+    error = None
     if request.method == 'POST':
         loginForm = LoginForm(request.POST)
         if loginForm.is_valid():
@@ -17,14 +18,16 @@ def chpasswd(request):
             messages = ldapAuth.ldap_auth(request.POST['username'], request.POST['old_password'])
             if messages['status'] == 0: 
                 ldapAuth.ldap_chpasswd(request.POST['username'], request.POST['new_password'])
-                return redirect(request, reverse('success'))
+                return redirect(reverse('success'))
+            else:
+                error = messages['error']
     else:
         loginForm = LoginForm()
-    return render(request, "ok.html", {"form":loginForm})
+    return render(request, "ok.html", {"form":loginForm, "error": error})
 
 def ldap_auth(request):
     return render(request, "ok.html")
 
 def success(request):
-    return render("success.html")
+    return render(request, "success.html")
 

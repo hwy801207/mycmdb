@@ -3,7 +3,7 @@ from ldap3 import Server, Connection, LDAPBindError, LDAPChangesError
 class LdapAuth:
     
     def __init__(self):
-        self.server = Server('10.200.0.243', use_ssl=False)
+        self.server = Server('10.1.1.118', use_ssl=False)
         self.conn = Connection(self.server, 'cn=admin,dc=9icaishi,dc=net', 'Bad$2Fish', auto_bind=True)
         self.messages = {}
         
@@ -12,18 +12,18 @@ class LdapAuth:
         '''
                      修改密码前，验证用户是否存在，并且密码是否正确
         '''
-        base = "ou=People,dc=9icaishi,dc=net".format(username)
+        base = "uid={},ou=People,dc=9icaishi,dc=net".format(username)
         self.conn.search(base, search_filter="(uid={})".format(username))
         if len(self.conn.entries) == 0:
             self.messages['status'] = -1
             self.messages['error'] = "用户不存在"
         else:
-            try:
-                self.conn.rebind("uid=test1,"+base,password)
-            except LDAPBindError:
+            self.conn.rebind(base, password)
+            if self.conn.bound:
+                self.messages['status'] = 0
+            else:
                 self.messages['status'] = -1
                 self.messages['error'] = "密码不正确"
-        self.messages['status'] = 0
         return self.messages
         
     def ldap_chpasswd(self, username, password):   
