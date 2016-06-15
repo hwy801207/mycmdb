@@ -1,0 +1,4 @@
+ctrl + 1 提示，消除错误
+ctrl+shift+T 进入方法与类的定义
+CTRL+f4 关闭窗口
+CTRL+ALT+ENTER  打开console
