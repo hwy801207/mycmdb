@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django import forms
-from .models import Resource
+from .models import Resource, Server
+from django.core.urlresolvers import reverse
+
 
 
 class UploadForm(forms.Form):
@@ -26,4 +28,26 @@ def upload(request):
         return render(request, 'upload.html', {"uf":uf, "data": data})
 
 def download(request):
+    pass
+
+#关于server
+def addServer(request):
+    if request.method == 'POST':
+        hostname, ipAddr, machineType = request.POST['hostname', 'ipaddr', 'machinetype']
+        server = Server();
+        server.hostname = hostname
+        server.ipAddr = ipAddr
+        server.type = machineType
+        server.save()
+        return redirect(reverse('query'))
+    else: 
+        return render(request, 'server/add.html')
+
+def modifyServer(request):
+    pass
+
+def delServer(request):
+    pass
+
+def getServer(request):
     pass

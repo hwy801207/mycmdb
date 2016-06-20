@@ -1,6 +1,8 @@
 from django.db import models
 
 from django.contrib import admin
+from django.db.models.fields import IPAddressField
+from pip.utils.outdated import SELFCHECK_DATE_FMT
 
 
 class Resource(models.Model):
@@ -18,5 +20,17 @@ class Resource(models.Model):
     class Meta:
         db_table = "resource"
     
+
+class Server(models.Model):
+    hostname = models.CharField(max_length=128)
+    ipAddr   = models.IPAddressField();
+    # type is real server or virtual server 
+    type     = models.CharField(max_length=128)
     
-admin.site.register(Resource)
+    
+    def __unicode__(self):
+        return self.hostname
+    
+    class Meta:
+        db_table = "server"
+    
