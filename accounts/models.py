@@ -1,5 +1,6 @@
 from django.db import models
-from django.contrib.auth.models import (BaseUserManager, AbstractBaseUser)
+from django.contrib.auth.models import (BaseUserManager, AbstractBaseUser,
+    PermissionsMixin)
 
 # Create your models here.
 class UserManager(BaseUserManager):
@@ -14,9 +15,13 @@ class UserManager(BaseUserManager):
         except Exception as err:
             print(err.message)
         return user
+    
+    def create_superuser(self, username, password):
+        self.create_user(username=username, email = 'admin@kaka.com', password=password)
 
+  
 
-class Account(AbstractBaseUser):
+class Account(AbstractBaseUser,PermissionsMixin):
     email = models.EmailField(max_length=100, unique=True)
     username = models.CharField(max_length=100, unique=True)
 
@@ -24,4 +29,15 @@ class Account(AbstractBaseUser):
 
     USERNAME_FIELD= 'username'
     REQUIRED_FIELD=['email', 'username']
+    
+    @property
+    def is_active(self):
+        return True
+    
+    @property
+    def is_staff(self):
+        return True
+    
+    def get_short_name(self):
+        return self.username
 

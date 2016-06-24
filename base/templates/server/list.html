@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+
+	<table class="table table-bordered">
+	<thread>
+		<tr>
+	<th>hostname</th>
+	<th>ipAddress</th>
+	<th>Server Type</th>
+	<th>Action</th>
+	</tr>
+	</thread>
+	{% for server in servers %}
+		<tr>
+			<td>{{ server.hostname }}</td>
+			<td>{{ server.ipAddr}}</td>
+			<td>{{ server.type}}</td>
+			<td><span><a href="/server/{{ server.id }}">Edit</a></span>&nbsp;&nbsp;
+			<span><a href="/server/del/{{server.id}}">Del</a></span></td>
+		</tr>
+	{% endfor %}
+	</table>
+{% endblock %}
