@@ -1,9 +1,9 @@
 from ldap3 import Server, Connection, LDAPBindError, LDAPChangesError
-
+from cmdb.settings import LDAP_SERVER
 class LdapAuth:
     
     def __init__(self):
-        self.server = Server('10.1.1.118', use_ssl=False)
+        self.server = Server(LDAP_SERVER, use_ssl=False)
         self.conn = Connection(self.server, 'cn=admin,dc=9icaishi,dc=net', 'Bad$2Fish', auto_bind=True)
         self.messages = {}
         

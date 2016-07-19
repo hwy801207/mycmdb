@@ -1,0 +1,14 @@
+<html>
+<head>
+</head>
+<body>
+<form method="POST" action="{% url 'modifyserver' %}" >
+	hostname:<input name="hostname"	value="{{ server.hostname }}"/><br>
+	ipAddr:<input name="ipaddr" value="{{server.ipAddr }}"/><br>
+	type: <input name="machinetype" value="{{ server.type }}"/><br>
+	<input type="hidden" name="serverid" value="{{ server.id }}" />
+	{% csrf_token %}
+	<input type="submit" value="submit" />
+</form>
+</body>
+</html>
